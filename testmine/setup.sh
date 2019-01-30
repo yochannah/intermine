@@ -10,7 +10,10 @@ set -e # Errors are fatal.
 USERPROFILEDB=userprofile-demo
 PRODDB=intermine-demo
 MINENAME=testmine
-DIR="$(cd $(dirname "$0"); pwd)"
+# Allow custom directory specification
+if test -z $DIR; then
+    DIR="$(cd $(dirname "$0"); pwd)"
+fi
 IMDIR=$HOME/.intermine
 LOG=$DIR/build.log
 PROP_FILE=$IMDIR/testmodel.properties
@@ -103,5 +106,5 @@ echo "------> Loading userprofile..."
 
 echo "------> Running webapp"
 echo "------> Running ./gradlew tomcatstartwar"
-./gradlew tomcatstartwar & 
+./gradlew tomcatstartwar &
 echo "------> Finished"
