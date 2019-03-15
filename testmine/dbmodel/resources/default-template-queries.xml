@@ -43,6 +43,12 @@
       </query>
     </template>
 
+    <template name="employeeByNamePrivateTemplate" description="Private template to view all the employees with certain name" >
+      <query name="employeeByNamePrivateTemplate" model="testmodel" view="Employee.name Employee.age">
+        <constraint path="Employee.name" op="=" value="" description="" identifier="Employee.name" editable="true" code="A"/>
+      </query>
+    </template>
+
     <template name="employeesFromCompanyAndDepartment" description="View all the employees that work within a certain department of the specified company" >
       <query name="employeesFromCompanyAndDepartment" model="testmodel" view="Employee.name Employee.age" constraintLogic="A and B">
         <constraint path="Employee.department.company.name" op="=" value="CompanyA" description="" identifier="Company.name" editable="true" code="A"/>
@@ -170,6 +176,7 @@
     <tag name="im:aspect:People" objectIdentifier="employeesFromCompanyAndDepartment" type="template">
     </tag>
     <tag name="im:aspect:People" objectIdentifier="employeesOverACertainAgeFromDepartmentA" type="template"/>
+    <tag name="thisIsAPrivateTemplateTag" objectIdentifier="employeeByNamePrivateTemplate" type="template" />
     <tag name="im:public" objectIdentifier="employeesOverACertainAgeFromDepartmentA" type="template"/>
     <tag name="im:public" objectIdentifier="employeesFromCompanyAndDepartment" type="template"/>
     <tag name="im:aspect:People" objectIdentifier="employeeByName" type="template"/>
