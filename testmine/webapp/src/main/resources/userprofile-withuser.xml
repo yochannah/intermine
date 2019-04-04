@@ -139,11 +139,21 @@
                 <constraint path="Company.name" op="!=" value="Diffic*" editable="false" code="B"/>
             </query>
         </template>
+                <template name="private-template-23" title="Another private template" longDescription="Display info about companies associated with a particular VAT number">
+                    <query name="private-template-23" model="testmodel" view="Company.name Company.address.address Company.vatNumber">
+                        <constraint path="Company.vatNumber" op="&gt;=" value="0" editable="true" code="A"/>
+                        <constraint path="Company.name" op="!=" value="Diffic*" editable="false" code="B"/>
+                    </query>
+                </template>
         <template name="BrokenPrivate" title="This template should not validate">
             <query name="BrokenPrivate" model="testmodel" view="Employee.name Employee.age Employee.favouriteColour">
                 <constraint path="Employee.childhoodPet" type="Dog"/>
             </query>
         </template>
     </template-queries>
+    <tags>
+      <tag name="thisIsAPrivateTag" objectIdentifier="private-template-1" type="template"/>
+      <tag name="thisIsAlsoAPrivateTag" objectIdentifier="private-template-1" type="template"/>
+    </tags>
 </userprofile>
 </userprofiles>
